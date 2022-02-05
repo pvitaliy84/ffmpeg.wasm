@@ -32,10 +32,6 @@ module.exports = async ({ corePath: _corePath }) => {
     coreRemotePath.replace('ffmpeg-core.js', 'ffmpeg-core.wasm'),
     'application/wasm',
   );
-  const workerPath = await toBlobURL(
-    coreRemotePath.replace('ffmpeg-core.js', 'ffmpeg-core.worker.js'),
-    'application/javascript',
-  );
   if (typeof createFFmpegCore === 'undefined') {
     return new Promise((resolve) => {
       const script = document.createElement('script');
@@ -49,7 +45,6 @@ module.exports = async ({ corePath: _corePath }) => {
           createFFmpegCore,
           corePath,
           wasmPath,
-          workerPath,
         });
       };
       script.src = corePath;
@@ -63,6 +58,5 @@ module.exports = async ({ corePath: _corePath }) => {
     createFFmpegCore,
     corePath,
     wasmPath,
-    workerPath,
   });
 };

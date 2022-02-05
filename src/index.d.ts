@@ -12,6 +12,7 @@ type LogCallback = (logParams: { type: string; message: string }) => any;
 type ProgressCallback = (progressParams: { ratio: number }) => any;
 
 export interface CreateFFmpegOptions {
+    mainName?: string;
     /** path for ffmpeg-core.js script */
     corePath?: string;
     /** a boolean to turn on all logs, default is false */

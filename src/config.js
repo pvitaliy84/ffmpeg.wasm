@@ -8,6 +8,7 @@ module.exports = {
     '-y',
   ],
   baseOptions: {
+    mainName: 'main',
     /* Flag to turn on/off log messages in console */
     log: false,
     /*
