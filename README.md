@@ -16,7 +16,7 @@
 [![Downloads Total](https://img.shields.io/npm/dt/@ffmpeg/ffmpeg.svg)](https://www.npmjs.com/package/@ffmpeg/ffmpeg)
 [![Downloads Month](https://img.shields.io/npm/dm/@ffmpeg/ffmpeg.svg)](https://www.npmjs.com/package/@ffmpeg/ffmpeg)
 
-ffmpeg.wasm is a pure Webassembly / Javascript port of FFmpeg. It enables video & audio record, convert and stream right inside browsers.
+ffmpeg.wasm is a pure Webassembly / Javascript port of FFmpeg (SingleThread). It enables video & audio record, convert and stream right inside browsers.
 
 **AVI to MP4 Demo**
 <p align="center">
@@ -171,6 +171,7 @@ If you have those files serving in other location, you can rewrite the default b
 ```javascript
 const { createFFmpeg } = FFmpeg;
 const ffmpeg = createFFmpeg({
+  mainName: 'main',
   corePath: "http://localhost:3000/public/ffmpeg-core.js",
   // Use public address if you don't want to host your own.
   // corePath: 'https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js'
