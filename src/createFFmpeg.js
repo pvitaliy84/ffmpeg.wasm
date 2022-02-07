@@ -58,6 +58,7 @@ module.exports = (_options = {}) => {
       const {
         createFFmpegCore,
         corePath,
+        workerPath,
         wasmPath,
       } = await getCreateFFmpegCore(options);
       Core = await createFFmpegCore({
@@ -79,10 +80,15 @@ module.exports = (_options = {}) => {
               && path.endsWith('ffmpeg-core.wasm')) {
               return wasmPath;
             }
+            if (typeof workerPath !== 'undefined'
+              && path.endsWith('ffmpeg-core.worker.js')) {
+              return workerPath;
+            }
           }
           return prefix + path;
         },
       });
+      // ffmpeg = Core.cwrap('proxy_main', 'number', ['number', 'number']);
       // ffmpeg = Core.cwrap('main', 'number', ['number', 'number']); // single-thread
       ffmpeg = Core.cwrap('emscripten_proxy_main', 'number', ['number', 'number']); // multithread
       log('info', 'ffmpeg-core loaded');
