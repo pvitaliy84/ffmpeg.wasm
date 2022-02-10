@@ -88,7 +88,7 @@ module.exports = (_options = {}) => {
           return prefix + path;
         },
       });
-      // ffmpeg = Core.cwrap('proxy_main', 'number', ['number', 'number']);
+      // ffmpeg = Core.cwrap('proxy_main', 'number', ['number', 'number']); // multithread old
       // ffmpeg = Core.cwrap('main', 'number', ['number', 'number']); // single-thread
       ffmpeg = Core.cwrap('emscripten_proxy_main', 'number', ['number', 'number']); // multithread
       log('info', 'ffmpeg-core loaded');
